@@ -16,32 +16,31 @@ Product.init(
        auto_increment: true
        },
 
-     produce_name: {
+     product_name: {
        type: DataTypes.STRING,
        allowNull: false
        },
+
+       price: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        validate: { isDecimal: true }
+        },  
+
+        stock: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 10,
+          validate: { isNumeric: true, }
+          }, 
 
      category_id: {
        type: DataTypes.INTEGER,
            references: {
                model: 'category',
                key: 'id',
-               unique: false
                }
-       }, 
-       
-     stock: {
-       type: DataTypes.INTEGER,
-       allowNull: false,
-       defaultValue: 5,
-       validate: { isNumeric: true, }
-       }, 
-
-     price: {
-       type: DataTypes.DECIMAL,
-       allowNull: true,
-       validate: { isDecimal: true }
-       },  
+              }
   },
   {
     sequelize,
