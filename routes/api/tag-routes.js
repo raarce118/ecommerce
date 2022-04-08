@@ -16,6 +16,7 @@ const { Tag, Product, ProductTag } = require('../../models');
     })
     .then(tagData => res.json(tagData))
     .catch(err => {
+      conesole.log(err);
       res.status(500).json(err);
        });
     });
